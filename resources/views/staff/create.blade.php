@@ -16,11 +16,24 @@
                 @csrf
                 <tr>
                     <th>Full Name</th>
-                    <td><input type="text" name="name" /></td>
+                    <td><input class="form-control" type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <th>Select Department</th>
+                    <td>
+                        <select class="form-control" name="dp_id" id="exampleFormControlSelect1">
+                            @if($departments)
+                            @foreach($departments as $department)
+                            <option>-- Select Department --</option>
+                            <option>{{$department->title}}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <th>Salary Amount</th>
-                    <td><input type="number" name="salary" /></td>
+                    <td><input class="form-control" type="number" name="salary" /></td>
                 </tr>
 
                 <tr>

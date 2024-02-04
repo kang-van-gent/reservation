@@ -6,11 +6,23 @@
     <table class="table table-bordered">
         <tr>
             <th>Full Name</th>
-            <td><input type="text" value="{{$data->full_name}}" name="name" /></td>
+            <td><input class="form-control" type="text" value="{{$data->full_name}}" name="name" /></td>
+        </tr>
+        <tr>
+            <th>Select Department</th>
+            <td>
+                <select class="form-control" name="dp_id" id="exampleFormControlSelect1">
+                    @if($departments)
+                    @foreach($departments as $department)
+                    <option @if($data->department_id == $department->id) selected @endif value="{{$department->id}}">{{$department->title}}</option>
+                    @endforeach
+                    @endif
+                </select>
+            </td>
         </tr>
         <tr>
             <th>Salary Amount</th>
-            <td><input type="number" value="{{$data->salary_amt}}" name="salary" /></td>
+            <td><input class="form-control" type="number" value="{{$data->salary_amt}}" name="salary" /></td>
         </tr>
 
         <tr>

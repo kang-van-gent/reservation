@@ -1,16 +1,12 @@
 @extends('layout')
 @section('content')
-<form method="post" action="{{url('/roomtype/'.$data->id)}}">
+<form method="post" action="{{url('/room/'.$data->id)}}">
     @csrf
     @method('put')
     <table class="table table-bordered">
         <tr>
             <th>Title</th>
-            <td><input class="form-control" type="text" value="{{$data->title}}" name="title" /></td>
-        </tr>
-        <tr>
-            <th>Price</th>
-            <td><input class="form-control" type="number" value="{{$data->price}}" name="price" /></td>
+            <td><input type="text" class="form-control" value="{{$data->title}}" name="title" /></td>
         </tr>
         <tr>
             <th>Detail</th>

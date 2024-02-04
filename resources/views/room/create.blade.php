@@ -12,22 +12,26 @@
         <p class="text-success"> {{session('success')}}</p>
         @endif
         <!-- Room Type -->
-        <form id="roomtypeCreate" action="{{route('roomtype.store')}}" method="post">
+        <form id="roomCreate" action="{{route('room.store')}}" method="post">
             <table class="table table-bordered">
                 @csrf
                 <tr>
+                    <th>Select room type</th>
+                    <td>
+                        <select class="form-control" name="rt_id" id="exampleFormControlSelect1">
+                            @if($roomtypes)
+                            @foreach($roomtypes as $roomtype)
+                            <option value="{{$roomtype->id}}">{{$roomtype->title}}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <th>Title</th>
-                    <td><input class="form-control" type="text" name="title" /></td>
+                    <td><input type="text" class="form-control" name="title" /></td>
                 </tr>
-                <tr>
-                    <th>Price</th>
-                    <td><input class="form-control" type="number" name="price" /></td>
-                </tr>
-                <tr>
-                    <th>Detail</th>
-                    <td><textarea class="form-control" name="detail"></textarea></td>
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                </tr>
+
                 <tr>
                     <td colspan="2">
                         <input type="submit" class="btn btn-primary" value="submit" />
