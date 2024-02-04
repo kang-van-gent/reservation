@@ -50,6 +50,6 @@ class CustomerController extends Controller
     function logout()
     {
         session()->forget(['customerlogin', 'data']);
-        return redirect('/home');
+        return redirect('login');
     }
 }

@@ -42,7 +42,7 @@ class RoomtypeController extends Controller
         $data->detail = $request->detail;
         $data->price = $request->price;
         $data->save();
-        return redirect('/roomtype')->with('success', 'Data has been updated.');
+        return redirect("/roomtype/$id/edit")->with('success', 'Data has been updated.');
     }
 
     public function destroy(string $id)

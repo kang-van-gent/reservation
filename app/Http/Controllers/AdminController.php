@@ -35,15 +35,15 @@ class AdminController extends Controller
                 Cookie::queue('adminuser', $request->username, 1440);
                 Cookie::queue('adminpwd', $request->password, 1440);
             }
-            return redirect('admin');
+            return redirect('/');
         } else {
             return redirect('admin/login')->with('msg', 'Invalid username/Password!!');
         }
     }
 
-    // function logout()
-    // {
-    //     session()->forget(['adminData']);
-    //     return redirect('admin/login');
-    // }
+    function logout()
+    {
+        session()->forget(['adminData']);
+        return redirect('admin/login');
+    }
 }

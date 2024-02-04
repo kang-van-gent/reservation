@@ -1,5 +1,13 @@
 @extends('layout')
 @section('content')
+@if($errors->any())
+@foreach($errors->all() as $error)
+<p class="text-danger"> {{$error}}</p>
+@endforeach
+@endif
+@if(Session::has('success'))
+<p class="text-success"> {{session('success')}}</p>
+@endif
 <form method="post" action="{{url('/staff/'.$data->id)}}">
     @csrf
     @method('put')

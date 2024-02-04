@@ -19,7 +19,7 @@ class DepartmentController extends Controller
         $data->title = $request->title;
         $data->detail = $request->detail;
         $data->save();
-        return redirect('/create')->with('success', 'Data has been added.');
+        return redirect('/new-department')->with(['success' => 'Data has been added.']);
     }
 
     public function index()
@@ -41,7 +41,7 @@ class DepartmentController extends Controller
         $data->title = $request->title;
         $data->detail = $request->detail;
         $data->save();
-        return redirect('/department')->with('success', 'Data has been updated.');
+        return redirect("/department/$id/edit")->with(['success' => 'Data has been updated.']);
     }
 
     public function destroy(string $id)

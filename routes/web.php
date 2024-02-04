@@ -38,7 +38,7 @@ Route::get('/create', function () {
 Route::get('/staff', function () {
     return view('staff.index');
 });
-Route::get('/new-staff', function () {
+Route::get('/staff/create', function () {
     return view('staff.create');
 });
 
@@ -90,6 +90,6 @@ Route::get('/staff/{id}/delete', [StaffController::class, 'destroy']);
 Route::resource(name: 'room', controller: RoomController::class);
 Route::get('/room/{id}/delete', [RoomController::class, 'destroy']);
 
-//Room controller
+//Department controller
 Route::resource(name: 'department', controller: DepartmentController::class);
 Route::get('/department/{id}/delete', [DepartmentController::class, 'destroy']);

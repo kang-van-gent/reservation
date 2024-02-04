@@ -22,8 +22,7 @@ class StaffController extends Controller
         $data->department_id = $request->dp_id;
         $data->salary_amt = $request->salary;
         $data->save();
-        $departments = department::all();
-        return view('staff.create', ['departments' => $departments, 'success', 'Data created.']);
+        return redirect('/staff/create')->with(['success' => 'Data has been added.']);
     }
 
     public function create()
@@ -52,7 +51,8 @@ class StaffController extends Controller
         $data->department_id = $request->dp_id;
         $data->salary_amt = $request->salary;
         $data->save();
-        return redirect('/staff')->with('success', 'Data has been updated.');
+        $departments = department::all();
+        return redirect("/staff/$id/edit")->with(['success' => 'Data has been added.']);
     }
 
 
