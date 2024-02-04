@@ -22,10 +22,11 @@
                     <th>Select Department</th>
                     <td>
                         <select class="form-control" name="dp_id" id="exampleFormControlSelect1">
+                            <option>-- Select Department --</option>
                             @if($departments)
                             @foreach($departments as $department)
-                            <option>-- Select Department --</option>
-                            <option>{{$department->title}}</option>
+
+                            <option value="{{$department->id}}">{{$department->title}}</option>
                             @endforeach
                             @endif
                         </select>

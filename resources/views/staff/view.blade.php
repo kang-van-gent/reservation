@@ -10,7 +10,7 @@
         </tr>
         <tr>
             <th>Department</th>
-            <td><input class="form-control" type="text" value="{{$departments->title}}" name="name" readonly /></td>
+            <td><input class="form-control" type="text" value="{{$data->department->title}}" name="name" readonly /></td>
         </tr>
         <tr>
             <th>Salary Amount</th>
