@@ -105,6 +105,18 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>booking</span>
+                </a>
+                <div id="collapseTwo4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('/new-booking')}}">Add New</a>
+                        <a class=" collapse-item" href="{{url('/booking')}}">View All</a>
+                    </div>
+                </div>
+            </li>
             <div class="modal-footer">
                 <a class="btn btn-primary" href="{{url('admin/logout')}}">Logout</a>
             </div>
@@ -209,5 +221,6 @@
 
 <!-- Custom scripts for all pages-->
 <script src="/js/sb-admin-2.min.js"></script>
+@yield('scripts');
 
 </html>

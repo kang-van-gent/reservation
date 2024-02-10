@@ -5,6 +5,7 @@ use App\Http\Controllers\RoomtypeController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -72,6 +73,8 @@ Route::resource('admin/customer', CustomerController::class);
 Route::get('/login', [CustomerController::class, 'login']);
 Route::post('customer/login', [CustomerController::class, 'customer_login']);
 Route::get('/logout', [CustomerController::class, 'logout']);
+Route::get('/cust/booking', [BookingController::class, 'front_booking']);
+Route::get('/cust/custbooking', [BookingController::class, 'customer_booking']);
 
 //Authentication controller
 Route::get('/admin/login', [AdminController::class, 'login']);
@@ -93,3 +96,7 @@ Route::get('/room/{id}/delete', [RoomController::class, 'destroy']);
 //Department controller
 Route::resource(name: 'department', controller: DepartmentController::class);
 Route::get('/department/{id}/delete', [DepartmentController::class, 'destroy']);
+
+//Admin Booking
+Route::get('/booking/available-rooms/{checkin_date}', [BookingController::class, 'available_rooms']);
+Route::resource('/booking', BookingController::class);

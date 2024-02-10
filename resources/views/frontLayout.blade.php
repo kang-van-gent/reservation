@@ -28,6 +28,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/home')}}">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/cust/booking')}}">Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/cust/custbooking')}}">Your Booking</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="{{url('/register')}}">Register</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{url('/login')}}">Login</a></li>
                     @endif
@@ -36,5 +42,6 @@
         </div>
     </nav>
     @yield('content')
+    @yield('scripts');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

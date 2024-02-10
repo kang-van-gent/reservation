@@ -18,6 +18,14 @@ class RoomtypeController extends Controller
         $data->title = $request->title;
         $data->detail = $request->detail;
         $data->price = $request->price;
+        foreach ($request->file('imgs') as $img) {
+            $imgPath = $img->store('public/imgs');
+            $imgData = new roomtypeimages;
+            $imgData->roomtype_id = $data->id;
+            $imgData->img_src = $imgPath;
+            $imgData->img_alt = $request->title;
+            $imgData->save();
+        }
         $data->save();
         return redirect('/create')->with('success', 'Data has been added.');
     }

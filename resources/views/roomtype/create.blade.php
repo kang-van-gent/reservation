@@ -12,7 +12,7 @@
         <p class="text-success"> {{session('success')}}</p>
         @endif
         <!-- Room Type -->
-        <form id="roomtypeCreate" action="{{route('roomtype.store')}}" method="post">
+        <form id="roomtypeCreate" enctype="multipart/form-data" action="{{route('roomtype.store')}}" method="post">
             <table class="table table-bordered">
                 @csrf
                 <tr>
@@ -27,6 +27,12 @@
                     <th>Detail</th>
                     <td><textarea class="form-control" name="detail"></textarea></td>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                </tr>
+                <tr>
+                    <th>Gallery</th>
+                    <td>
+                        <input type="file" name="imgs[]" multiple />
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">

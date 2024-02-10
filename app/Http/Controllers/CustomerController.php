@@ -10,7 +10,7 @@ class CustomerController extends Controller
     //register
     function register()
     {
-        return view('register');
+        return view('front.register');
     }
 
     public function store(Request $request)
@@ -22,13 +22,13 @@ class CustomerController extends Controller
         $data->mobile = $request->mobile;
         $data->address = $request->address;
         $data->save();
-        return redirect('register')->with('success', 'Data has been added.');
+        return redirect('front.register')->with('success', 'Data has been added.');
     }
 
     //Login
     function login()
     {
-        return view('frontlogin');
+        return view('front.frontLogin');
     }
 
     //Check Login
@@ -42,7 +42,7 @@ class CustomerController extends Controller
             session(['customerlogin' => true, 'data' => $detail]);
             return redirect('/home');
         } else {
-            return redirect('login')->with('error', 'Invalid email/password!!');
+            return redirect('front.frontLogin')->with('error', 'Invalid email/password!!');
         }
     }
 
@@ -50,6 +50,6 @@ class CustomerController extends Controller
     function logout()
     {
         session()->forget(['customerlogin', 'data']);
-        return redirect('login');
+        return redirect('front.frontLogin');
     }
 }
