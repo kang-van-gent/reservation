@@ -14,20 +14,10 @@
             <p class='text-success'>{{session('success')}}</p>
             @endif
             <div class="table-responsive">
-                <form method="post" action="{{url('/booking')}}">
+                <form method="post" action="{{url('/custbooking')}}">
                     @csrf
                     <table class="table table-bordered">
-                        <tr>
-                            <th>Select Customers <span class="text-danger">*</span></th>
-                            <td>
-                                <select class="form-control" name="customer_id">
-                                    <option>-- Select Customer --</option>
-                                    @foreach($data as $customer)
-                                    <option value="{{$customer->id}}">{{$customer->fullname}}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                        </tr>
+
                         <tr>
                             <th>CheckIn Date <span class="text-danger">*</span></th>
                             <td><input type="date" name="checkin_date" class="form-control" /></td>
@@ -43,13 +33,11 @@
                                 <select class="form-control room-list" name="room_id">
                                     <option>-- Select Room --</option>
                                 </select>
+                                Room Price <span class="text-danger ">*</span>
+                                <input type="text" name="roomprice" class="form-control room-price" hidden />
                             </td>
                         </tr>
-                        <tr>
-                            <th>Room Price <span class="text-danger">*</span></th>
-                            <td><input type="text" name="roomprice" class="form-control" /></td>
 
-                        </tr>
                         <tr>
                             <th>Total Adults <span class="text-danger">*</span></th>
                             <td><input type="text" name="total_adults" class="form-control" /></td>
@@ -81,7 +69,7 @@
         $(".checkin-date").on('blur', function() {
             var _checkindate = $(this).val();
             $.ajax({
-                url: "{{url('/booking')}}/available-rooms/" + _checkindate,
+                url: "{{url('/custbooking')}}/available-rooms/" + _checkindate,
                 dataType: 'json',
                 beforeSend: function() {
                     $(".room-list").html('<option>--- Loading ---</option>');
@@ -89,12 +77,20 @@
                 success: function(res) {
                     var _html = '';
                     $.each(res.data, function(index, row) {
-                        _html += '<option value="' + row.room.id + '">' + row.room.title + '-' + row.roomtype.title + '</option>';
+                        console.log(row.roomtype.price)
+                        _html += '<option data-price="' + row.roomtype.price + '" value="' + row.room.id + '">' + row.room.title + '-' + row.roomtype.title + '</option>';
                     });
                     $(".room-list").html(_html);
+                    var _selectedPrice = $(".room-list").find("option:selected").after("data-price");
+                    $(".room-price").val(_selectedPrice);
                 }
             });
         });
+        $(".room-list").on("change", function() {
+            var _selectedPrice = $(this).find(('option:selected')).attr('data-price');
+            $(".room-price").val(_selectedPrice)
+
+        })
     });
 </script>
 @endsection

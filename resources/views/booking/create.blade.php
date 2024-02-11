@@ -47,7 +47,7 @@
                         </tr>
                         <tr>
                             <th>Room Price <span class="text-danger">*</span></th>
-                            <td><input type="text" name="roomprice" class="form-control" /></td>
+                            <td><input type="text" name="roomprice" class="form-control room-price" /></td>
 
                         </tr>
                         <tr>
@@ -89,12 +89,20 @@
                 success: function(res) {
                     var _html = '';
                     $.each(res.data, function(index, row) {
-                        _html += '<option value="' + row.room.id + '">' + row.room.title + '-' + row.roomtype.title + '</option>';
+                        console.log(row.roomtype.price)
+                        _html += '<option data-price="' + row.roomtype.price + '" value="' + row.room.id + '">' + row.room.title + '-' + row.roomtype.title + '</option>';
                     });
                     $(".room-list").html(_html);
+                    var _selectedPrice = $(".room-list").find("option:selected").after("data-price");
+                    $(".room-price").val(_selectedPrice);
                 }
             });
         });
+        $(".room-list").on("change", function() {
+            var _selectedPrice = $(this).find(('option:selected')).attr('data-price');
+            $(".room-price").val(_selectedPrice)
+
+        })
     });
 </script>
 @endsection

@@ -17,10 +17,15 @@
             <td><textarea class="form-control" name="detail" readonly>{{$data->detail}}</textarea></td>
         </tr>
         <tr>
-            <td colspan="2">
-                <input type="button" class="btn btn-primary" onclick="window.history.go(-1); return false;" value="back" />
-            </td>
-        </tr>
-    </table>
+            <th>Gallery Images</th>
+            <td>
+                <table class=" table-bordered mt-3">
+                    <tr>
+                        @foreach($data->roomtypeimgs as $img)
+                        <td class="imgcol{{$img->id}}"><img width="150" src="{{ Storage::url($img->img_src) }} " />
+                        </td>
+                        @endforeach
+                    </tr>
+
 </form>
 @endsection

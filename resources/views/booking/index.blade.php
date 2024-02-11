@@ -15,13 +15,8 @@
             @if(Session::has('success'))
             <p class='text-success'>{{session('success')}}</p>
             @endif
-            <div class="table
-
--responsive">
-                <table class="table table
-
--bordered" id="dataTable" width="100%" cellspacing="
-0">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 
                     <thead>
                         <tr>

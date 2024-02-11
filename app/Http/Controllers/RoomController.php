@@ -35,7 +35,7 @@ class RoomController extends Controller
         $data->roomtype_id = $request->rt_id;
         $data->title = $request->title;
         $data->save();
-        return redirect('/new-room')->with('success', 'Data has been added.');
+        return redirect('/room')->with('success', 'Data has been added.');
     }
 
     /**

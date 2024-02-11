@@ -1,4 +1,4 @@
-@extends('frontlayout')
+@extends('frontLayout')
 @section('content')
 <div class="container my-4">
 

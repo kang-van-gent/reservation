@@ -1,4 +1,4 @@
-@extends('frontlayout')
+@extends('frontLayout')
 @section('content')
 <div class="container my-4">
     <h3 class="mb-3">Login</h3>

@@ -59,13 +59,18 @@ Route::get('/new-department', function () {
     return view('department.create');
 });
 
-//Front layout route
-Route::get('/frontlayout', function () {
-    return view('frontlayout');
+//Booking routes.
+Route::get('/booking', function () {
+    return view('booking.index');
 });
+Route::get('/new-booking', function () {
+    return view('booking.create');
+});
+
 
 //Home route
 Route::get('/home', [HomeController::class, 'home']);
+Route::get('/gallery', [HomeController::class, 'gallery']);
 
 //Customer route
 Route::get('/register', [CustomerController::class, 'register']);
@@ -73,8 +78,11 @@ Route::resource('admin/customer', CustomerController::class);
 Route::get('/login', [CustomerController::class, 'login']);
 Route::post('customer/login', [CustomerController::class, 'customer_login']);
 Route::get('/logout', [CustomerController::class, 'logout']);
+
 Route::get('/cust/booking', [BookingController::class, 'front_booking']);
 Route::get('/cust/custbooking', [BookingController::class, 'customer_booking']);
+Route::post('/custbooking', [BookingController::class, 'customer_store_booking']);
+Route::get('/custbooking/available-rooms/{checkin_date}', [BookingController::class, 'available_rooms']);
 
 //Authentication controller
 Route::get('/admin/login', [AdminController::class, 'login']);
@@ -84,6 +92,7 @@ Route::get('/admin/logout', [AdminController::class, 'logout']);
 // Room type controller
 Route::resource(name: 'roomtype', controller: RoomtypeController::class);
 Route::get('/roomtype/{id}/delete', [RoomtypeController::class, 'destroy']);
+Route::get('admin/roomtypeimage/delete/{id}', [RoomtypeController::class, 'destroy_image']);
 
 //Staff controller
 Route::resource(name: 'staff', controller: StaffController::class);
@@ -100,3 +109,5 @@ Route::get('/department/{id}/delete', [DepartmentController::class, 'destroy']);
 //Admin Booking
 Route::get('/booking/available-rooms/{checkin_date}', [BookingController::class, 'available_rooms']);
 Route::resource('/booking', BookingController::class);
+Route::get('/booking/{id}/delete', [BookingController::class, 'destroy']);
+Route::get('/cust/booking/{id}/delete', [BookingController::class, 'cust_destroy']);
